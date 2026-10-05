@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speisekarte verwalten – Admin</title>
+  <style>
+    :root {
+      --bg: #050509;
+      --bg-card: #101018;
+      --bg-card-alt: #111827;
+      --accent: #c9a227;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, var(--bg) 45%);
+      color: var(--text-main);
+      padding: 2rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .header h1 {
+      font-size: 1.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+    }
+
+    .btn {
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+    }
+
+    .btn-back {
+      background: #111827;
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.6);
+    }
+
+    .btn-back:hover {
+      background: #1f2937;
+    }
+
+    .btn-edit {
+      background: #3b82f6;
+      color: #fff;
+      margin-right: 0.5rem;
+    }
+
+    .btn-edit:hover {
+      background: #2563eb;
+    }
+
+    .btn-delete {
+      background: #ef4444;
+      color: #fff;
+    }
+
+    .btn-delete:hover {
+      background: #dc2626;
+    }
+
+    .btn-save {
+      background: #22c55e;
+      color: #000;
+      font-weight: 700;
+    }
+
+    .btn-save:hover {
+      background: #16a34a;
+    }
+
+    .btn-cancel {
+      background: #6b7280;
+      color: #fff;
+    }
+
+    .btn-cancel:hover {
+      background: #4b5563;
+    }
+
+    .category-section {
+      background: var(--bg-card);
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(148,163,184,0.3);
+      overflow: hidden;
+    }
+
+    .category-header {
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+
+    .category-header:hover {
+      background: rgba(201,162,39,0.1);
+    }
+
+    .category-header h2 {
+      color: var(--accent);
+      font-size: 1.3rem;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .category-toggle {
+      font-size: 1.5rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .category-toggle.active {
+      transform: rotate(180deg);
+    }
+
+    .category-content {
+      display: none;
+      padding: 0 1.5rem;
+    }
+
+    .category-content.active {
+      display: block;
+      padding: 0 1.5rem 1.5rem;
+      animation: slideDown 0.3s ease-out;
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dish-item {
+      background: rgba(17,24,39,0.6);
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid rgba(148,163,184,0.2);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .dish-content {
+      flex: 1;
+    }
+
+    .dish-item h3 {
+      color: var(--text-main);
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .dish-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0.2rem 0;
+    }
+
+    .dish-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+
+    .error {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal-content {
+      background: var(--bg-card);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 600px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 1px solid rgba(148,163,184,0.3);
+    }
+
+    .modal-content h2 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      color: var(--text-main);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem;
+      background: rgba(17,24,39,0.8);
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: 8px;
+      color: var(--text-main);
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .form-group input[type="checkbox"] {
+      width: auto;
+      margin-right: 0.5rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .modal-actions button {
+      flex: 1;
+      padding: 0.75rem;
+    }
+
+    @media (max-width: 768px) {
+      .dish-item {
+        flex-direction: column;
+      }
+
+      .dish-actions {
+        width: 100%;
+      }
+
+      .dish-actions button {
+        flex: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>📋 Speisekarte verwalten</h1>
+    <button class="btn btn-back" onclick="window.location.href='admin.html'">← Zurück zu Bestellungen</button>
+  </div>
+
+  <div id="menuContainer">
+    <div class="loading">Lade Speisekarte...</div>
+  </div>
+
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <h2>Gericht bearbeiten</h2>
+      <form id="editForm">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" id="editName" required>
+        </div>
+        <div class="form-group">
+          <label>Zutaten</label>
+          <textarea id="editIngredients"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Preis (Normal)</label>
+          <input type="number" step="0.01" id="editPriceNormal">
+        </div>
+        <div class="form-group">
+          <label>Preis (Party) - Optional</label>
+          <input type="number" step="0.01" id="editPriceParty">
+        </div>
+        <div class="form-group">
+          <label>
+            <input type="checkbox" id="editVegetarian">
+            Vegetarisch
+          </label>
+        </div>
+        <div class="form-group">
+          <label>Allergene</label>
+          <input type="text" id="editAllergens" placeholder="z.B. d, f">
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn btn-save">💾 Speichern</button>
+          <button type="button" class="btn btn-cancel" onclick="closeEditModal()">Abbrechen</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Meldung -->
+  <div id="toast"
+       style="position:fixed; top:1.5rem; left:50%; transform:translateX(-50%);
+              z-index:3000;
+              display:none;
+              padding:1rem 1.8rem; border-radius:999px;
+              font-size:1rem; font-weight:600;
+              box-shadow:0 12px 35px rgba(0,0,0,0.7);
+              align-items:center; gap:0.8rem;">
+    <span id="toastIcon" style="font-size:1.2rem;">✅</span>
+    <span id="toastText">Gericht aktualisiert!</span>
+  </div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database-compat.js"></script>
+
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyBx523IA1kBQO0gayIYaUSShzkKvdo-CXM",
+    authDomain: "rome-bestellungen.firebaseapp.com",
+    databaseURL: "https://rome-bestellungen-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "rome-bestellungen",
+    storageBucket: "rome-bestellungen.firebasestorage.app",
+    messagingSenderId: "1087671688166",
+    appId: "1:1087671688166:web:14e3e0a06454d0ae6d9427"
+  };
+  
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+  
+  const auth = firebase.auth();
+  const database = firebase.database();
+
+  let currentCategory = '';
+  let currentDishIndex = -1;
+  let allDishes = {};
+
+  const categoryNames = {
+    pizza: '🍕 Pizza',
+    pizzaVeg: '🥗 Vegetarische Pizza',
+    calzone: '🥟 Calzone',
+    pasta: '🍝 Pasta',
+    pastaForno: '🔥 Pasta al Forno',
+    panini: '🥖 Panini',
+    suppen: '🍲 Suppen',
+    antipasti: '🍅 Antipasti',
+    fingerfood: '🍤 Fingerfood',
+    salate: '🥗 Salate',
+    desserts: '🍰 Desserts',
+    drinks: '🥤 Getränke',
+    schueler: '🎒 Schülermenüs',
+    mittag: '☀️ Mittagsangebote'
+  };
+
+  function showToast(message, type = "success") {
+    const toast = document.getElementById("toast");
+    const icon  = document.getElementById("toastIcon");
+    const text  = document.getElementById("toastText");
+    if (!toast || !icon || !text) return;
+
+    if (type === "success") {
+      toast.style.background = "linear-gradient(135deg,#22c55e,#16a34a)";
+      icon.textContent = "✅";
+    } else {
+      toast.style.background = "linear-gradient(135deg,#ef4444,#b91c1c)";
+      icon.textContent = "❌";
+    }
+
+    text.textContent = message;
+    toast.style.display = "flex";
+    toast.style.opacity = "1";
+
+    setTimeout(() => {
+      toast.style.transition = "opacity 0.3s ease";
+      toast.style.opacity = "0";
+      setTimeout(() => {
+        toast.style.display = "none";
+        toast.style.transition = "";
+      }, 300);
+    }, 2000);
+  }
+
+  auth.onAuthStateChanged(user => {
+    if (!user) {
+      window.location.href = 'admin-login.html';
+    } else {
+      loadMenu();
+    }
+  });
+
+  // ========== REALTIME DATABASE: MENÜ LADEN ==========
+  async function loadMenu() {
+    const container = document.getElementById('menuContainer');
+
+    try {
+      const snapshot = await database.ref('menu').once('value');
+
+      if (!snapshot.exists()) {
+        container.innerHTML = '<div class="error">❌ Keine Gerichte gefunden.</div>';
+        return;
+      }
+
+      allDishes = snapshot.val() || {};
+      let html = '';
+
+      Object.keys(allDishes).forEach(category => {
+        const dishes = allDishes[category] || [];
+        
+        html += `
+          <div class="category-section">
+            <div class="category-header" onclick="toggleCategory('${category}')">
+              <h2>${categoryNames[category] || category}</h2>
+              <span class="category-toggle" id="toggle-${category}">▼</span>
+            </div>
+            <div class="category-content" id="content-${category}">
+              ${dishes.map((dish, index) => `
+                <div class="dish-item">
+                  <div class="dish-content">
+                    <h3>${dish.name}</h3>
+                    <p><strong>Zutaten:</strong> ${dish.ingredients || 'Keine Angabe'}</p>
+                    <p><strong>Preis:</strong> ${formatPrice(dish.price)}</p>
+                    <p><strong>Vegetarisch:</strong> ${dish.vegetarian ? 'Ja ✅' : 'Nein'}</p>
+                    ${dish.allergens ? `<p><strong>🛡️ Allergene:</strong> ${dish.allergens}</p>` : ''}
+                  </div>
+                  <div class="dish-actions">
+                    <button class="btn btn-edit" onclick="editDish('${category}', ${index})">✏️</button>
+                    <button class="btn btn-delete" onclick="deleteDish('${category}', ${index})">🗑️</button>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+
+    } catch (error) {
+      console.error('Fehler beim Laden:', error);
+      container.innerHTML = '<div class="error">❌ Fehler beim Laden.</div>';
+    }
+  }
+
+  function toggleCategory(category) {
+    const content = document.getElementById(`content-${category}`);
+    const toggle = document.getElementById(`toggle-${category}`);
+
+    if (!content || !toggle) return;
+
+    content.classList.toggle('active');
+    toggle.classList.toggle('active');
+  }
+
+  function formatPrice(price) {
+    if (typeof price === 'object' && price.normal != null && price.party != null) {
+      return `Normal: ${price.normal.toFixed(2)} € | Party: ${price.party.toFixed(2)} €`;
+    }
+    if (typeof price === 'number') {
+      return `${price.toFixed(2)} €`;
+    }
+    return '-';
+  }
+
+  function editDish(category, index) {
+    currentCategory = category;
+    currentDishIndex = index;
+    const dish = allDishes[category][index];
+
+    document.getElementById('editName').value = dish.name || '';
+    document.getElementById('editIngredients').value = dish.ingredients || '';
+
+    if (typeof dish.price === 'object') {
+      document.getElementById('editPriceNormal').value = dish.price.normal ?? '';
+      document.getElementById('editPriceParty').value = dish.price.party ?? '';
+    } else {
+      document.getElementById('editPriceNormal').value = dish.price ?? '';
+      document.getElementById('editPriceParty').value = '';
+    }
+
+    document.getElementById('editVegetarian').checked = !!dish.vegetarian;
+    document.getElementById('editAllergens').value = dish.allergens || '';
+
+    document.getElementById('editModal').classList.add('active');
+  }
+
+  function closeEditModal() {
+    document.getElementById('editModal').classList.remove('active');
+  }
+
+  // ========== REALTIME DATABASE: SPEICHERN ==========
+  document.getElementById('editForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('editName').value.trim();
+    const ingredients = document.getElementById('editIngredients').value.trim();
+    const priceNormalVal = document.getElementById('editPriceNormal').value;
+    const pricePartyVal = document.getElementById('editPriceParty').value;
+    const vegetarian = document.getElementById('editVegetarian').checked;
+
+    const priceNormal = priceNormalVal !== '' ? parseFloat(priceNormalVal) : null;
+    const priceParty = pricePartyVal !== '' ? parseFloat(pricePartyVal) : null;
+
+    let price;
+    if (priceParty !== null) {
+      price = { normal: priceNormal ?? 0, party: priceParty };
+    } else {
+      price = priceNormal ?? 0;
+    }
+
+    const updatedDish = {
+      ...allDishes[currentCategory][currentDishIndex],
+      name,
+      ingredients,
+      price,
+      vegetarian
+    };
+
+    allDishes[currentCategory][currentDishIndex] = updatedDish;
+
+    try {
+      await database.ref('menu/' + currentCategory).set(allDishes[currentCategory]);
+
+      closeEditModal();
+      loadMenu();
+      showToast('Gericht aktualisiert!', 'success');
+    } catch (error) {
+      console.error('Fehler beim Speichern:', error);
+      showToast('Fehler beim Speichern!', 'error');
+    }
+  });
+
+  // ========== REALTIME DATABASE: LÖSCHEN ==========
+  async function deleteDish(category, index) {
+    if (!confirm('Wirklich löschen?')) return;
+
+    allDishes[category].splice(index, 1);
+
+    try {
+      await database.ref('menu/' + category).set(allDishes[category]);
+
+      loadMenu();
+      showToast('Gelöscht!', 'success');
+    } catch (error) {
+      console.error('Fehler beim Löschen:', error);
+      showToast('Fehler!', 'error');
+    }
+  }
+</script>
+
+</body>
+</html>

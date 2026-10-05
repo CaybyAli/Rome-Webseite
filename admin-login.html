@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login – Rome</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top left, #111827 0, #050509 45%);
+      color: #e5e7eb;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .login-container {
+      background: linear-gradient(135deg, #101018 0, #111827 100%);
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+    }
+
+    .login-title {
+      font-size: 2rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      color: #c9a227;
+      letter-spacing: 0.05em;
+    }
+
+    .login-subtitle {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #d1d5db;
+      margin-bottom: 0.5rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      background: #0a0a0a;
+      border: 1px solid rgba(148,163,184,0.3);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #c9a227;
+      box-shadow: 0 0 0 3px rgba(201,162,39,0.1);
+    }
+
+    .btn-login {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, #c9a227, #f2d27b);
+      border: none;
+      border-radius: 8px;
+      color: #0a0a0a;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-top: 1rem;
+    }
+
+    .btn-login:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201,162,39,0.4);
+    }
+
+    .btn-login:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .error-message {
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      color: #fca5a5;
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 2rem;
+      color: #9ca3af;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover {
+      color: #c9a227;
+    }
+
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 2rem 1.5rem;
+      }
+
+      .login-title {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1 class="login-title">Admin Login</h1>
+    <p class="login-subtitle">Rome Bestellsystem</p>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input 
+          type="email" 
+          id="email" 
+          placeholder="E-Mail" 
+          required
+          autocomplete="email"
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password">Passwort</label>
+        <input 
+          type="password" 
+          id="password" 
+          placeholder="••••••••" 
+          required
+          autocomplete="current-password"
+        >
+      </div>
+
+      <button type="submit" class="btn-login" id="loginBtn">Anmelden</button>
+
+      <div class="error-message" id="errorMessage"></div>
+    </form>
+
+    <a href="index.html" class="back-link">← Zurück zur Startseite</a>
+  </div>
+
+ <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyBx523IA1kBQO0gayIYaUSShzkKvdo-CXM",
+  authDomain: "rome-bestellungen.firebaseapp.com",
+  projectId: "rome-bestellungen",
+  storageBucket: "rome-bestellungen.firebasestorage.app",
+  messagingSenderId: "1087671688166",
+  appId: "1:1087671688166:web:14e3e0a06454d0ae6d9427",
+  measurementId: "G-3E854D8MQ4"
+};
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  // Warte, bis DOM geladen ist
+  document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('loginForm');
+    const loginBtn = document.getElementById('loginBtn');
+    const errorMessage = document.getElementById('errorMessage');
+
+    if (!loginForm) {
+      console.error('Login-Form nicht gefunden!');
+      return;
+    }
+
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault(); // VERHINDERT das Neuladen der Seite
+      e.stopPropagation();
+
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      console.log('Login-Versuch mit:', email); // Debug-Ausgabe
+
+      loginBtn.disabled = true;
+      loginBtn.textContent = 'Wird angemeldet...';
+      errorMessage.classList.remove('show');
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then(function(userCredential) {
+          console.log('Login erfolgreich!', userCredential.user);
+          // Weiterleitung nach erfolgreichem Login
+          window.location.href = 'admin.html'; // ODER adminneu.html
+        })
+        .catch(function(error) {
+          console.error('Login-Fehler:', error);
+          
+          let message = 'Login fehlgeschlagen. Bitte versuchen Sie es erneut.';
+          
+          if (error.code === 'auth/wrong-password' || error.code === 'auth/user-not-found') {
+            message = 'E-Mail oder Passwort falsch.';
+          } else if (error.code === 'auth/too-many-requests') {
+            message = 'Zu viele Versuche. Bitte warten Sie einen Moment.';
+          } else if (error.code === 'auth/invalid-email') {
+            message = 'Ungültige E-Mail-Adresse.';
+          }
+
+          errorMessage.textContent = message;
+          errorMessage.classList.add('show');
+          
+          loginBtn.disabled = false;
+          loginBtn.textContent = 'Anmelden';
+        });
+    });
+  });
+</script>
+</body>
+</html>

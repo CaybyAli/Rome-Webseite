@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Speisekarte hochladen – Fix</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #111;
+      color: #fff;
+      padding: 3rem;
+      text-align: center;
+    }
+    button {
+      padding: 1.5rem 3rem;
+      font-size: 1.5rem;
+      background: #22c55e;
+      color: #000;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      margin: 1rem;
+    }
+    button:hover {
+      background: #16a34a;
+    }
+    #status {
+      margin-top: 2rem;
+      font-size: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>🍕 Speisekarte richtig hochladen</h1>
+  <p>Klicke auf den Button, um ALLE Gerichte korrekt in Firebase zu speichern</p>
+  
+  <button onclick="uploadMenu()">✅ Gerichte hochladen</button>
+  
+  <div id="status"></div>
+
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+  
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBx523IA1kBQO0gayIYaUSShzkKvdo-CXM",
+      authDomain: "rome-bestellungen.firebaseapp.com",
+      projectId: "rome-bestellungen",
+      storageBucket: "rome-bestellungen.firebasestorage.app",
+      messagingSenderId: "1087671688166",
+      appId: "1:1087671688166:web:14e3e0a06454d0ae6d9427"
+    };
+
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
+    const db = firebase.firestore();
+
+    const dishes = {
+      pizza:[
+        {nr:1,name:"Pizza Salame",ingredients:"Tomatensoße, Mozzarella, Salami",price:{normal:10.80,party:32.00},vegetarian:false},
+        {nr:2,name:"Pizza Prosciutto",ingredients:"Tomatensoße, Mozzarella, Hinterschinken",price:{normal:10.80,party:32.00},vegetarian:false},
+        {nr:3,name:"Pizza Tonno",ingredients:"Tomatensoße, Mozzarella, Tunfisch, Zwiebel",price:{normal:11.00,party:33.00},vegetarian:false},
+        {nr:4,name:"Pizza Romana",ingredients:"Tomatensoße, Mozzarella, Salami, Hinterschinken",price:{normal:11.20,party:33.00},vegetarian:false},
+        {nr:5,name:"Pizza Quattro Stagioni",ingredients:"Tomatensoße, Mozzarella, Schinken, Champignons, Artischocken, Oliven",price:{normal:12.50,party:33.00},vegetarian:false},
+        {nr:6,name:"Pizza Poco Piccante",ingredients:"Tomatensoße, Mozzarella, scharfe Salami, Kapern, Zwiebeln",price:{normal:11.60,party:32.00},vegetarian:false},
+        {nr:7,name:"Pizza Parma",ingredients:"Tomatensoße, Mozzarella, Parmaschinken, Rucola, Parmesanflocken",price:{normal:14.50,party:35.00},vegetarian:false},
+        {nr:8,name:"Pizza Etna",ingredients:"Tomatensoße, Mozz., scharfe Salami, Gorgonzola, Rucola, Parmesanflocken",price:{normal:13.50,party:32.50},vegetarian:false},
+        {nr:9,name:"Pizza Bianco Noemi",ingredients:"Kartoffeln, Mozzarella",price:{normal:10.80,party:30.00},vegetarian:true},
+        {nr:10,name:"Pizza Patate, Salsiccia",ingredients:"Kartoffeln, Käse, Salsiccia",price:{normal:12.30,party:31.50},vegetarian:false},
+        {nr:11,name:"Pizza Tirolese",ingredients:"Tomatensoße, Mozzarella, Zucchini, Speck, Parmesan",price:{normal:12.00,party:33.00},vegetarian:false},
+        {nr:12,name:"Pizza Zingara",ingredients:"Tomatensoße, Mozzarella Scharfe Salami, Paprika, Zwiebel und Scharf",price:{normal:12.00,party:32.00},vegetarian:false},
+        {nr:13,name:"Pizza Sole Mio",ingredients:"Tomatensoße, Mozzarella, Eier, Schinken, Paprika",price:{normal:12.00,party:32.00},vegetarian:false},
+        {nr:14,name:"Pizza Marinara",ingredients:"Tomatensoße, Knoblauch, Oregano",price:{normal:10.50,party:27.00},vegetarian:true},
+        {nr:15,name:"Pizza Patatine e Wurst",ingredients:"Tomatensoße, Mozzarella",price:{normal:10.50,party:28.00},vegetarian:false},
+        {nr:16,name:"Pizza Ettlingen",ingredients:"Tomatensoße, Mozzarella, Mortadella, Gorgonzola, Aubergine",price:{normal:13.00,party:33.00},vegetarian:false},
+        {nr:17,name:"Pizza Popeye",ingredients:"Tomatensoße, Mozzarella, Parmesan, Kirschtomaten, Zucchini",price:{normal:12.50,party:33.00},vegetarian:true},
+        {nr:18,name:"Pizza Prosciutto e Funghi",ingredients:"Tomatensoße, Mozzarella, Hinterschinken, Pilze",price:{normal:11.80,party:32.00},vegetarian:false},
+        {nr:19,name:"Pizza Salami Funghi",ingredients:"Tomatensoße, Mozzarella, Salami, Pilze",price:{normal:11.80,party:32.00},vegetarian:false}
+      ],
+      pizzaVeg:[
+        {nr:20,name:"Pizza Margherita",ingredients:"Tomatensoße, Mozzarella",price:{normal:9.70,party:28.00},vegetarian:true},
+        {nr:21,name:"Pizza Capricciosa",ingredients:"Tomatensoße, Mozz., Hinterschinken, Champignons, Schinken, Artischocken, Oliven, Sardellen",price:{normal:11.30,party:32.00},vegetarian:false},
+        {nr:22,name:"Pizza Paprika",ingredients:"Tomaten, Mozzarella, frische Paprika",price:{normal:10.90,party:27.90},vegetarian:true},
+        {nr:23,name:"Pizza Funghi",ingredients:"Tomatensoße, Mozzarella, frische Champignons",price:{normal:10.90,party:28.00},vegetarian:true},
+        {nr:24,name:"Pizza Vegetaria",ingredients:"Tomatensoße, Mozzarella, Aubergine, Zucchini, Champignons, Paprika",price:{normal:12.60,party:30.70},vegetarian:true},
+        {nr:25,name:"Pizza Quattro Formaggi",ingredients:"Tomaten, Gorgonzola, Parmesan, Gouda",price:{normal:12.40,party:32.20},vegetarian:true},
+        {nr:26,name:"Pizza La Bufala",ingredients:"Tomatensoße, Büffelmozzarella, Kirschtomaten, Basilikum, Olivenöl, Rucola",price:{normal:13.00,party:33.00},vegetarian:true},
+        {nr:27,name:"Pizza Bianco Zucchini",ingredients:"Zucchini, Mozzarella",price:{normal:10.90,party:29.00},vegetarian:true},
+        {nr:28,name:"Pizza Rossa Ailevna",ingredients:"Tomatensoße, Mozzarella, Oliven, Kirschtomaten",price:{normal:11.00,party:29.00},vegetarian:true},
+        {nr:29,name:"Pizza Hawaii",ingredients:"Tomatensoße, Mozzarella, Schinken, Ananas",price:{normal:10.50,party:30.00},vegetarian:false},
+        {nr:30,name:"Pizza Salmone",ingredients:"Mozzarella, Lachs, Rucola, Kirschtomaten, Roter Pfeffer",price:{normal:13.50,party:33.00},vegetarian:false}
+      ],
+      calzone:[
+        {nr:1,name:"Calzone Tradizionale",ingredients:"Tomatensoße, Mozzarella, Schinken, Champignons, Salami",price:11.7,vegetarian:false},
+        {nr:2,name:"Calzone Liscio",ingredients:"Tomatensoße, Mozzarella, Schinken",price:10.5,vegetarian:false},
+        {nr:3,name:"Calzone Quattro Formaggi",ingredients:"Mozzarella, Gorgonzola, Parmesan, Gouda",price:12,vegetarian:true}
+      ],
+      pasta:[
+        {nr:54,name:"Spaghetti Romé",ingredients:"Krabben, Zucchini, Tomaten-Sahnesoße",price:13.0,vegetarian:false},
+        {nr:55,name:"Spaghetti Aglio, Olio e Peperoncino",ingredients:"",price:11.0,vegetarian:true},
+        {nr:56,name:"Spaghetti Bolognese",ingredients:"Hackfleisch-Bolognesesoße",price:12.0,vegetarian:false},
+        {nr:57,name:"Spaghetti Pesto",ingredients:"Basilikum-Pestosauce",price:12.0,vegetarian:true},
+        {nr:58,name:"Spaghetti Napoli",ingredients:"Tomatensoße",price:9.5,vegetarian:true},
+        {nr:59,name:"Spaghetti Frutti di Mare",ingredients:"Weißwein, Soße, Kirschtomaten, Petersilie",price:14.0,vegetarian:false},
+        {nr:60,name:"Penne alla Arrabbiata",ingredients:"Tomatensoße, Scharf",price:12.0,vegetarian:true},
+        {nr:61,name:"Penne Vegetaria",ingredients:"Gemüse, Sesam mit Tomatensoße",price:12.0,vegetarian:true},
+        {nr:62,name:"Penne Lachs",ingredients:"Lachs, Sahnesoße, Rucola",price:13.0,vegetarian:false},
+        {nr:63,name:"Rigatoni 4 Formaggi",ingredients:"Vier Käsesorten",price:12.0,vegetarian:true},
+        {nr:64,name:"Rigatoni al Tonno",ingredients:"Thunfisch, Oliven, Kapern, Tomatensoße",price:11.5,vegetarian:false},
+        {nr:65,name:"Rigatoni alla Norma",ingredients:"Aubergine, Schinken, Mozzarella, Tomatensoße",price:12.0,vegetarian:false},
+        {nr:66,name:"Rigatoni Calabrese",ingredients:"Scharfe Salami, Oliven, Paprika, Tomatensoße",price:12.0,vegetarian:false},
+        {nr:67,name:"Tortellini alla Panna",ingredients:"Schinken, Parmesan, Sahnesoße",price:12.0,vegetarian:false},
+        {nr:68,name:"Tortellini Bolognese",ingredients:"Hackfleisch-Bolognesesoße",price:11.0,vegetarian:false},
+        {nr:69,name:"Tortellini Primavera",ingredients:"Schinken, Pilze, Bolognesesoße, Sahnesoße",price:12.0,vegetarian:false},
+        {nr:70,name:"Tortellini Gorgonzola",ingredients:"Sahnesoße, Gorgonzola",price:12.0,vegetarian:false},
+        {nr:71,name:"Gnocchi Sorentina",ingredients:"Tomatensoße, Mozzarella",price:11.0,vegetarian:true},
+        {nr:72,name:"Gnocchi Gorgonzola",ingredients:"Gorgonzola, Sahnesoße",price:12.0,vegetarian:true},
+        {nr:73,name:"Gnocchi al Pesto",ingredients:"Basilikumsoße",price:12.0,vegetarian:true}
+      ],
+      pastaForno:[
+        {nr:74,name:"Lasagne Classic Bolognese",ingredients:"Mozzarella, Béchamelsoße, Bolognesesoße",price:12.0,vegetarian:false},
+        {nr:75,name:"Lasagne Vegetaria",ingredients:"Gemüse, Sesam, Tomatensoße, Béchamelsoße",price:13.0,vegetarian:true},
+        {nr:76,name:"Lasagne Lachs",ingredients:"Lachs, Sahnesoße, Béchamelsoße, Tomatensoße",price:14.0,vegetarian:false}
+      ],
+      panini:[
+        {nr:36,name:"Panino Salmone",ingredients:"Lachs, Rote Zwiebeln, Eier, Salat, Tomaten",price:9,vegetarian:false},
+        {nr:37,name:"Panino Italy",ingredients:"Tomaten, Mozzarella, Basilikum, Olivenöl",price:8,vegetarian:true},
+        {nr:38,name:"Panino Parma",ingredients:"Mozzarella, Parmaschinken (crudo), Tomaten, Rucola, Olivenöl",price:8,vegetarian:false},
+        {nr:39,name:"Panino Romé",ingredients:"Mortadella, Provolone, Tomaten, Kopfsalat",price:8,vegetarian:false},
+        {nr:40,name:"Panino Piccante",ingredients:"Scharfe Salami, Mozzarella, Tomaten, scharfes Olivenöl",price:8,vegetarian:false},
+        {nr:41,name:"Panino Tirolese",ingredients:"Speck, Butterkäse, Tomaten, Salat",price:8,vegetarian:false},
+        {nr:42,name:"Panino Chef",ingredients:"Mozzarella, Schinken, Tomaten, Salat, Olivenöl",price:8,vegetarian:false}
+      ],
+      suppen:[
+        {nr:43,name:"Tomatensuppe",ingredients:"Hausgemacht, cremig",price:5,vegetarian:true},
+        {nr:44,name:"Minestrone Verdure",ingredients:"Italienische Gemüsesuppe",price:5,vegetarian:true}
+      ],
+      antipasti:[
+        {nr:45,name:"Bruschetta Pomodoro",ingredients:"Frische Tomaten, Knoblauch, Basilikum",price:5,vegetarian:true},
+        {nr:46,name:"Bruschetta Tonno",ingredients:"Thunfisch, Zwiebeln, Olivenöl",price:5,vegetarian:false},
+        {nr:47,name:"Bruschetta Verdure",ingredients:"Gegrilltes Gemüse",price:5,vegetarian:true},
+        {nr:48,name:"Bruschetta Romè",ingredients:"3x1 von jeder Sorte",price:5,vegetarian:true}
+      ],
+      fingerfood:[
+        {nr:1,name:"Arancini Ragú",ingredients:"Knusprige Reisbällchen mit Ragú-Füllung",price:4.5,vegetarian:false},
+        {nr:2,name:"Arancini Spinat",ingredients:"Knusprige Reisbällchen mit Spinatfüllung",price:4.5,vegetarian:true},
+        {nr:3,name:"Pizza Bombe Panzerotti",ingredients:"Gefüllte Teigtasche aus Pizzateig",price:6,vegetarian:false}
+      ],
+      salate:[
+        {nr:49,name:"Insalata Mista",ingredients:"Grüner Salat, Tomaten, Karotten, Gurke",price:9,vegetarian:true},
+        {nr:50,name:"Insalata Italia Mista",ingredients:"Schinken, Käse, Oliven, Zwiebel, Ei",price:11,vegetarian:false},
+        {nr:51,name:"Insalata Nizza",ingredients:"Oliven, Thunfisch, Zwiebeln, Ei",price:11,vegetarian:false},
+        {nr:52,name:"Insalata Romé",ingredients:"Rucola, Lachs, Kirschtomaten, Parmesan",price:11.5,vegetarian:false},
+        {nr:53,name:"Insalata Caprese",ingredients:"Tomaten, Mozzarella, Balsamico, Basilikum",price:10,vegetarian:true}
+      ],
+      desserts:[
+        {nr:77,name:"Panna Cotta",ingredients:"Mit Erdbeer- oder Caramelsauce",price:4,vegetarian:true}
+      ],
+      drinks:[
+        {nr:78,name:"Coca Cola",ingredients:"0,33 l",price:2.5,vegetarian:true},
+        {nr:79,name:"Fanta",ingredients:"0,33 l",price:2.5,vegetarian:true},
+        {nr:80,name:"Mezzo Mix",ingredients:"0,33 l",price:2.5,vegetarian:true},
+        {nr:81,name:"Coca Cola Zero",ingredients:"0,33 l",price:2.5,vegetarian:true},
+        {nr:82,name:"Sprite",ingredients:"0,33 l",price:2.5,vegetarian:true},
+        {nr:83,name:"Red Bull",ingredients:"250 ml",price:2.8,vegetarian:true},
+        {nr:84,name:"Acqua Naturale",ingredients:"Stilles Wasser · 0,5 l",price:2.2,vegetarian:true},
+        {nr:85,name:"Acqua Frizzante",ingredients:"Sprudelwasser · 0,5 l",price:2.2,vegetarian:true}
+      ],
+      schueler:[
+        {nr:1,name:"Margherita Menü",ingredients:"Pizza mit 2 Zutaten + Softgetränk 330 ml",price:6.5,vegetarian:true},
+        {nr:2,name:"Pizza Unsch Menu",ingredients:"Pizza mit 2 Zutaten + Softgetränk 330 ml",price:7.5,vegetarian:false},
+        {nr:3,name:"Pasta Pomodoro Menu",ingredients:"Pasta Napoli + Softgetränk 330 ml",price:7,vegetarian:true},
+        {nr:4,name:"Pasta Bolognese Menu",ingredients:"Pasta mit Bolognesesoße + Softgetränk 330 ml",price:7,vegetarian:false}
+      ],
+      mittag:[
+        {nr:1,name:"Pasta del Giorno",ingredients:"Frische Pasta + Beilagensalat",price:12.5,vegetarian:true},
+        {nr:2,name:"Pizza mit 3 Zutaten",ingredients:"Pizza mit 3 Zutaten nach Wahl + Beilagensalat",price:12.5,vegetarian:false}
+      ]
+    };
+
+    async function uploadMenu() {
+      const status = document.getElementById('status');
+      status.innerHTML = '⏳ Hochladen...';
+
+      try {
+        for (const [category, items] of Object.entries(dishes)) {
+          await db.collection('menu').doc(category).set({ items });
+          status.innerHTML += `<br>✅ ${category} hochgeladen`;
+        }
+        
+        status.innerHTML += '<br><br>🎉 <strong>FERTIG! Alle Gerichte sind jetzt in Firebase!</strong>';
+        status.innerHTML += '<br><br>✅ Du kannst jetzt auf "Speisekarte" klicken und alles sehen!';
+      } catch (error) {
+        status.innerHTML = '❌ Fehler: ' + error.message;
+      }
+    }
+  </script>
+</body>
+</html>

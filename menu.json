@@ -1,0 +1,704 @@
+{
+  "antipasti": [
+    {
+      "name": "Bruschetta Pomodoro",
+      "ingredients": "Frische Tomaten, Knoblauch, Basilikum",
+      "price": 5.00,
+      "vegetarian": true,
+      "nr": 45
+    },
+    {
+      "name": "Bruschetta Tonno",
+      "ingredients": "Thunfisch, Zwiebeln, Olivenöl",
+      "price": 5.00,
+      "vegetarian": false,
+      "nr": 46
+    },
+    {
+      "name": "Bruschetta Verdure",
+      "ingredients": "Gegrilltes Gemüse",
+      "price": 5.00,
+      "vegetarian": true,
+      "nr": 47
+    },
+    {
+      "name": "Bruschetta Romè",
+      "ingredients": "3x1 von jeder Sorte",
+      "price": 5.00,
+      "vegetarian": true,
+      "nr": 48
+    }
+  ],
+  "calzone": [
+    {
+      "name": "Calzone Tradizionale",
+      "ingredients": "Tomatensoße, Mozzarella, Schinken, Champignons, Salami",
+      "price": 11.70,
+      "vegetarian": false,
+      "nr": 90
+    },
+    {
+      "name": "Calzone Liscio",
+      "ingredients": "Tomatensoße, Mozzarella, Schinken",
+      "price": 10.50,
+      "vegetarian": false,
+      "nr": 91
+    },
+    {
+      "name": "Calzone Quattro Formaggi",
+      "ingredients": "Mozzarella, Gorgonzola, Parmesan, Gouda",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 92
+    }
+  ],
+  "desserts": [
+    {
+      "name": "Panna Cotta",
+      "ingredients": "Mit Erdbeer- oder Caramelsauce",
+      "price": 4.00,
+      "vegetarian": true,
+      "nr": 100
+    }
+  ],
+  "drinks": [
+    {
+      "name": "Coca Cola",
+      "ingredients": "0,33l",
+      "price": 2.50,
+      "vegetarian": true,
+      "nr": 101
+    },
+    {
+      "name": "Fanta",
+      "ingredients": "0,33 l",
+      "price": 2.50,
+      "vegetarian": true,
+      "nr": 102
+    },
+    {
+      "name": "Mezzo Mix",
+      "ingredients": "0,33 l",
+      "price": 2.50,
+      "vegetarian": true,
+      "nr": 103
+    },
+    {
+      "name": "Coca Cola Zero",
+      "ingredients": "0,33 l",
+      "price": 2.50,
+      "vegetarian": true,
+      "nr": 104
+    },
+    {
+      "name": "Sprite",
+      "ingredients": "0,33 l",
+      "price": 2.50,
+      "vegetarian": true,
+      "nr": 105
+    },
+    {
+      "name": "Red Bull",
+      "ingredients": "250 ml",
+      "price": 2.80,
+      "vegetarian": true,
+      "nr": 106
+    },
+    {
+      "name": "Acqua Naturale",
+      "ingredients": "Stilles Wasser · 0,5 l",
+      "price": 2.20,
+      "vegetarian": true,
+      "nr": 107
+    },
+    {
+      "name": "Acqua Frizzante",
+      "ingredients": "Sprudelwasser · 0,5 l",
+      "price": 2.20,
+      "vegetarian": true,
+      "nr": 108
+    }
+  ],
+  "fingerfood": [
+    {
+      "name": "Arancini Ragú",
+      "ingredients": "Knusprige Reisbällchen mit Ragú-Füllung",
+      "price": 4.50,
+      "vegetarian": false,
+      "nr": 110
+    },
+    {
+      "name": "Arancini Spinat",
+      "ingredients": "Knusprige Reisbällchen mit Spinatfüllung",
+      "price": 4.50,
+      "vegetarian": true,
+      "nr": 111
+    },
+    {
+      "name": "Pizza Bombe Panzerotti",
+      "ingredients": "Gefüllte Teigtasche aus Pizzateig",
+      "price": 6.00,
+      "vegetarian": false,
+      "nr": 112
+    }
+  ],
+  "mittag": [
+    {
+      "name": "Pasta del Giorno",
+      "ingredients": "Frische Pasta + Beilagensalat",
+      "price": 12.50,
+      "vegetarian": true,
+      "nr": 120
+    },
+    {
+      "name": "Pizza mit 3 Zutaten",
+      "ingredients": "Pizza mit 3 Zutaten nach Wahl + Beilagensalat",
+      "price": 12.50,
+      "vegetarian": false,
+      "nr": 121
+    }
+  ],
+  "panini": [
+    {
+      "name": "Panino Salmone",
+      "ingredients": "Lachs, Rote Zwiebeln, Eier, Salat, Tomaten",
+      "price": 9.00,
+      "vegetarian": false,
+      "nr": 130
+    },
+    {
+      "name": "Panino Italy",
+      "ingredients": "Tomaten, Mozzarella, Basilikum, Olivenöl",
+      "price": 8.00,
+      "vegetarian": true,
+      "nr": 131
+    },
+    {
+      "name": "Panino Parma",
+      "ingredients": "Mozzarella, Parmaschinken (crudo), Tomaten, Rucola, Olivenöl",
+      "price": 8.00,
+      "vegetarian": false,
+      "nr": 132
+    },
+    {
+      "name": "Panino Romé",
+      "ingredients": "Mortadella, Provolone, Tomaten, Kopfsalat",
+      "price": 8.00,
+      "vegetarian": false,
+      "nr": 133
+    },
+    {
+      "name": "Panino Piccante",
+      "ingredients": "Scharfe Salami, Mozzarella, Tomaten, scharfes Olivenöl",
+      "price": 8.00,
+      "vegetarian": false,
+      "nr": 134
+    },
+    {
+      "name": "Panino Tirolese",
+      "ingredients": "Speck, Butterkäse, Tomaten, Salat",
+      "price": 8.00,
+      "vegetarian": false,
+      "nr": 135
+    },
+    {
+      "name": "Panino Chef",
+      "ingredients": "Mozzarella, Schinken, Tomaten, Salat, Olivenöl",
+      "price": 8.00,
+      "vegetarian": false,
+      "nr": 136
+    }
+  ],
+  "pasta": [
+    {
+      "name": "Spaghetti Romé",
+      "ingredients": "Krabben, Zucchini, Tomaten-Sahnesoße",
+      "price": 13.00,
+      "vegetarian": false,
+      "nr": 140
+    },
+    {
+      "name": "Spaghetti Aglio, Olio e Peperoncino",
+      "ingredients": "Knoblauch, Olivenöl, Chili",
+      "price": 11.00,
+      "vegetarian": true,
+      "nr": 141
+    },
+    {
+      "name": "Spaghetti Bolognese",
+      "ingredients": "Hackfleisch-Bolognesesoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 142
+    },
+    {
+      "name": "Spaghetti Pesto",
+      "ingredients": "Basilikum-Pestosauce",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 143
+    },
+    {
+      "name": "Spaghetti Napoli",
+      "ingredients": "Tomatensoße",
+      "price": 9.50,
+      "vegetarian": true,
+      "nr": 144
+    },
+    {
+      "name": "Spaghetti Frutti di Mare",
+      "ingredients": "Weißwein, Soße, Kirschtomaten, Petersilie",
+      "price": 14.00,
+      "vegetarian": false,
+      "nr": 145
+    },
+    {
+      "name": "Penne alla Arrabbiata",
+      "ingredients": "Tomatensoße, Scharf",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 146
+    },
+    {
+      "name": "Penne Vegetaria",
+      "ingredients": "Gemüse, Sesam mit Tomatensoße",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 147
+    },
+    {
+      "name": "Penne Lachs",
+      "ingredients": "Lachs, Sahnesoße, Rucola",
+      "price": 13.00,
+      "vegetarian": false,
+      "nr": 148
+    },
+    {
+      "name": "Rigatoni 4 Formaggi",
+      "ingredients": "Vier Käsesorten",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 149
+    },
+    {
+      "name": "Rigatoni al Tonno",
+      "ingredients": "Thunfisch, Oliven, Kapern, Tomatensoße",
+      "price": 11.50,
+      "vegetarian": false,
+      "nr": 150
+    },
+    {
+      "name": "Rigatoni alla Norma",
+      "ingredients": "Aubergine, Schinken, Mozzarella, Tomatensoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 151
+    },
+    {
+      "name": "Rigatoni Calabrese",
+      "ingredients": "Scharfe Salami, Oliven, Paprika, Tomatensoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 152
+    },
+    {
+      "name": "Tortellini alla Panna",
+      "ingredients": "Schinken, Parmesan, Sahnesoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 153
+    },
+    {
+      "name": "Tortellini Bolognese",
+      "ingredients": "Hackfleisch-Bolognesesoße",
+      "price": 11.00,
+      "vegetarian": false,
+      "nr": 154
+    },
+    {
+      "name": "Tortellini Primavera",
+      "ingredients": "Schinken, Pilze, Bolognesesoße, Sahnesoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 155
+    },
+    {
+      "name": "Tortellini Gorgonzola",
+      "ingredients": "Sahnesoße, Gorgonzola",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 156
+    },
+    {
+      "name": "Gnocchi Sorentina",
+      "ingredients": "Tomatensoße, Mozzarella",
+      "price": 11.00,
+      "vegetarian": true,
+      "nr": 157
+    },
+    {
+      "name": "Gnocchi Gorgonzola",
+      "ingredients": "Gorgonzola, Sahnesoße",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 158
+    },
+    {
+      "name": "Gnocchi al Pesto",
+      "ingredients": "Basilikumsoße",
+      "price": 12.00,
+      "vegetarian": true,
+      "nr": 159
+    }
+  ],
+  "pastaForno": [
+    {
+      "name": "Lasagne Classic Bolognese",
+      "ingredients": "Mozzarella, Béchamelsoße, Bolognesesoße",
+      "price": 12.00,
+      "vegetarian": false,
+      "nr": 160
+    },
+    {
+      "name": "Lasagne Vegetaria",
+      "ingredients": "Gemüse, Sesam, Tomatensoße, Béchamelsoße",
+      "price": 13.00,
+      "vegetarian": true,
+      "nr": 161
+    },
+    {
+      "name": "Lasagne Lachs",
+      "ingredients": "Lachs, Sahnesoße, Béchamelsoße, Tomatensoße",
+      "price": 14.00,
+      "vegetarian": false,
+      "nr": 162
+    }
+  ],
+  "pizza": [
+    {
+      "name": "Pizza Salame",
+      "ingredients": "Tomatensoße, Mozzarella, Salami",
+      "price": 10.80,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 1
+    },
+    {
+      "name": "Pizza Prosciutto",
+      "ingredients": "Tomatensoße, Mozzarella, Hinterschinken",
+      "price": 10.80,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 2
+    },
+    {
+      "name": "Pizza Tonno",
+      "ingredients": "Tomatensoße, Mozzarella, Tunfisch, Zwiebel",
+      "price": 11.00,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 3
+    },
+    {
+      "name": "Pizza Romana",
+      "ingredients": "Tomatensoße, Mozzarella, Salami, Hinterschinken",
+      "price": 11.20,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 4
+    },
+    {
+      "name": "Pizza Quattro Stagioni",
+      "ingredients": "Tomatensoße, Mozzarella, Schinken, Champignons, Artischocken, Oliven",
+      "price": 12.50,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 5
+    },
+    {
+      "name": "Pizza Poco Piccante",
+      "ingredients": "Tomatensoße, Mozzarella, scharfe Salami, Kapern, Zwiebeln",
+      "price": 11.60,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 6
+    },
+    {
+      "name": "Pizza Parma",
+      "ingredients": "Tomatensoße, Mozzarella, Parmaschinken, Rucola, Parmesanflocken",
+      "price": 14.50,
+      "priceParty": 35.00,
+      "vegetarian": false,
+      "nr": 7
+    },
+    {
+      "name": "Pizza Etna",
+      "ingredients": "Tomatensoße, Mozz., scharfe Salami, Gorgonzola, Rucola, Parmesanflocken",
+      "price": 13.50,
+      "priceParty": 32.50,
+      "vegetarian": false,
+      "nr": 8
+    },
+    {
+      "name": "Pizza Bianco Noemi",
+      "ingredients": "Kartoffeln, Mozzarella",
+      "price": 10.80,
+      "priceParty": 30.00,
+      "vegetarian": true,
+      "nr": 9
+    },
+    {
+      "name": "Pizza Patate, Salsiccia",
+      "ingredients": "Kartoffeln, Käse, Salsiccia",
+      "price": 12.30,
+      "priceParty": 31.50,
+      "vegetarian": false,
+      "nr": 10
+    },
+    {
+      "name": "Pizza Tirolese",
+      "ingredients": "Tomatensoße, Mozzarella, Zucchini, Speck, Parmesan",
+      "price": 12.00,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 11
+    },
+    {
+      "name": "Pizza Zingara",
+      "ingredients": "Tomatensoße, Mozzarella Scharfe Salami, Paprika, Zwiebel und Scharf",
+      "price": 12.00,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 12
+    },
+    {
+      "name": "Pizza Sole Mio",
+      "ingredients": "Tomatensoße, Mozzarella, Eier, Schinken, Paprika",
+      "price": 12.00,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 13
+    },
+    {
+      "name": "Pizza Marinara",
+      "ingredients": "Tomatensoße, Knoblauch, Oregano",
+      "price": 10.50,
+      "priceParty": 27.00,
+      "vegetarian": true,
+      "nr": 14
+    },
+    {
+      "name": "Pizza Patatine e Wurst",
+      "ingredients": "Tomatensoße, Mozzarella, Pommes, Würstchen",
+      "price": 10.50,
+      "priceParty": 28.00,
+      "vegetarian": false,
+      "nr": 15
+    },
+    {
+      "name": "Pizza Ettlingen",
+      "ingredients": "Tomatensoße, Mozzarella, Mortadella, Gorgonzola, Aubergine",
+      "price": 13.00,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 16
+    },
+    {
+      "name": "Pizza Popeye",
+      "ingredients": "Tomatensoße, Mozzarella, Parmesan, Kirschtomaten, Zucchini",
+      "price": 12.50,
+      "priceParty": 33.00,
+      "vegetarian": true,
+      "nr": 17
+    },
+    {
+      "name": "Pizza Prosciutto e Funghi",
+      "ingredients": "Tomatensoße, Mozzarella, Hinterschinken, Pilze",
+      "price": 11.80,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 18
+    },
+    {
+      "name": "Pizza Salami Funghi",
+      "ingredients": "Tomatensoße, Mozzarella, Salami, Pilze",
+      "price": 11.80,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 19
+    }
+  ],
+  "pizzaVeg": [
+    {
+      "name": "Pizza Margherita",
+      "ingredients": "Tomatensoße, Mozzarella",
+      "price": 9.70,
+      "priceParty": 28.00,
+      "vegetarian": true,
+      "nr": 20
+    },
+    {
+      "name": "Pizza Capricciosa",
+      "ingredients": "Tomatensoße, Mozz., Hinterschinken, Champignons, Schinken, Artischocken, Oliven, Sardellen",
+      "price": 11.30,
+      "priceParty": 32.00,
+      "vegetarian": false,
+      "nr": 21
+    },
+    {
+      "name": "Pizza Paprika",
+      "ingredients": "Tomaten, Mozzarella, frische Paprika",
+      "price": 10.90,
+      "priceParty": 27.90,
+      "vegetarian": true,
+      "nr": 22
+    },
+    {
+      "name": "Pizza Funghi",
+      "ingredients": "Tomatensoße, Mozzarella, frische Champignons",
+      "price": 10.90,
+      "priceParty": 28.00,
+      "vegetarian": true,
+      "nr": 23
+    },
+    {
+      "name": "Pizza Vegetaria",
+      "ingredients": "Tomatensoße, Mozzarella, Aubergine, Zucchini, Champignons, Paprika",
+      "price": 12.60,
+      "priceParty": 30.70,
+      "vegetarian": true,
+      "nr": 24
+    },
+    {
+      "name": "Pizza Quattro Formaggi",
+      "ingredients": "Tomaten, Gorgonzola, Parmesan, Gouda",
+      "price": 12.40,
+      "priceParty": 32.20,
+      "vegetarian": true,
+      "nr": 25
+    },
+    {
+      "name": "Pizza La Bufala",
+      "ingredients": "Tomatensoße, Büffelmozzarella, Kirschtomaten, Basilikum, Olivenöl, Rucola",
+      "price": 13.00,
+      "priceParty": 33.00,
+      "vegetarian": true,
+      "nr": 26
+    },
+    {
+      "name": "Pizza Bianco Zucchini",
+      "ingredients": "Zucchini, Mozzarella",
+      "price": 10.90,
+      "priceParty": 29.00,
+      "vegetarian": true,
+      "nr": 27
+    },
+    {
+      "name": "Pizza Rossa Ailevna",
+      "ingredients": "Tomatensoße, Mozzarella, Oliven, Kirschtomaten",
+      "price": 11.00,
+      "priceParty": 29.00,
+      "vegetarian": true,
+      "nr": 28
+    },
+    {
+      "name": "Pizza Hawaii",
+      "ingredients": "Tomatensoße, Mozzarella, Schinken, Ananas",
+      "price": 10.50,
+      "priceParty": 30.00,
+      "vegetarian": false,
+      "nr": 29
+    },
+    {
+      "name": "Pizza Salmone",
+      "ingredients": "Mozzarella, Lachs, Rucola, Kirschtomaten, Roter Pfeffer",
+      "price": 13.50,
+      "priceParty": 33.00,
+      "vegetarian": false,
+      "nr": 30
+    }
+  ],
+  "salate": [
+    {
+      "name": "Insalata Mista",
+      "ingredients": "Grüner Salat, Tomaten, Karotten, Gurke",
+      "price": 9.00,
+      "vegetarian": true,
+      "nr": 70
+    },
+    {
+      "name": "Insalata Italia Mista",
+      "ingredients": "Schinken, Käse, Oliven, Zwiebel, Ei",
+      "price": 11.00,
+      "vegetarian": false,
+      "nr": 71
+    },
+    {
+      "name": "Insalata Nizza",
+      "ingredients": "Oliven, Thunfisch, Zwiebeln, Ei",
+      "price": 11.00,
+      "vegetarian": false,
+      "nr": 72
+    },
+    {
+      "name": "Insalata Romé",
+      "ingredients": "Rucola, Lachs, Kirschtomaten, Parmesan",
+      "price": 11.50,
+      "vegetarian": false,
+      "nr": 73
+    },
+    {
+      "name": "Insalata Caprese",
+      "ingredients": "Tomaten, Mozzarella, Balsamico, Basilikum",
+      "price": 10.00,
+      "vegetarian": true,
+      "nr": 74
+    }
+  ],
+  "schueler": [
+    {
+      "name": "Margherita Menü",
+      "ingredients": "Pizza mit 2 Zutaten + Softgetränk 330 ml",
+      "price": 6.50,
+      "vegetarian": true,
+      "nr": 80
+    },
+    {
+      "name": "Pizza Unsch Menu",
+      "ingredients": "Pizza mit 2 Zutaten + Softgetränk 330 ml",
+      "price": 7.50,
+      "vegetarian": false,
+      "nr": 81
+    },
+    {
+      "name": "Pasta Pomodoro Menu",
+      "ingredients": "Pasta Napoli + Softgetränk 330 ml",
+      "price": 7.00,
+      "vegetarian": true,
+      "nr": 82
+    },
+    {
+      "name": "Pasta Bolognese Menu",
+      "ingredients": "Pasta mit Bolognesesoße + Softgetränk 330 ml",
+      "price": 7.00,
+      "vegetarian": false,
+      "nr": 83
+    }
+  ],
+  "suppen": [
+    {
+      "name": "Tomatensuppe",
+      "ingredients": "Hausgemacht, cremig",
+      "price": 5.00,
+      "vegetarian": true,
+      "nr": 60
+    },
+    {
+      "name": "Minestrone Verdure",
+      "ingredients": "Italienische Gemüsesuppe",
+      "price": 5.00,
+      "vegetarian": true,
+      "nr": 61
+    }
+  ]
+}

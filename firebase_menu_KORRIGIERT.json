@@ -1,0 +1,886 @@
+{
+  "deliverySettings": {
+    "active": true,
+    "deliveryFee": 2.5,
+    "deliveryRadius": 5,
+    "minOrderValue": 15
+  },
+  "menu": {
+    "antipasti": [
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Frische Tomaten, Knoblauch, Basilikum",
+        "name": "Bruschetta Pomodoro",
+        "nr": 45,
+        "price": 5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, c, d, f, l",
+        "ingredients": "Thunfisch, Zwiebeln, Olivenöl",
+        "name": "Bruschetta Tonno",
+        "nr": 46,
+        "price": 5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Gegrilltes Gemüse",
+        "name": "Bruschetta Verdure",
+        "nr": 47,
+        "price": 5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, c, d, f, l",
+        "ingredients": "3x1 von jeder Sorte",
+        "name": "Bruschetta Romè",
+        "nr": 48,
+        "price": 5,
+        "vegetarian": true
+      }
+    ],
+    "calzone": [
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 8, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Schinken, Champignons, Salami",
+        "name": "Calzone Tradizionale",
+        "nr": 90,
+        "price": 11.7,
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Schinken",
+        "name": "Calzone Liscio",
+        "nr": 91,
+        "price": 10.5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Mozzarella, Gorgonzola, Parmesan, Gouda",
+        "name": "Calzone Quattro Formaggi",
+        "nr": 92,
+        "price": 12,
+        "vegetarian": true
+      }
+    ],
+    "desserts": [
+      {
+        "allergens": "d",
+        "ingredients": "Mit Erdbeer- oder Caramelsauce",
+        "name": "Panna Cotta",
+        "nr": 100,
+        "price": 4,
+        "vegetarian": true
+      }
+    ],
+    "drinks": [
+      {
+        "ingredients": "0,33l",
+        "name": "Coca Cola",
+        "nr": 101,
+        "price": 2.5,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "0,33 l",
+        "name": "Fanta",
+        "nr": 102,
+        "price": 2.5,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "0,33 l",
+        "name": "Mezzo Mix",
+        "nr": 103,
+        "price": 2.5,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "0,33 l",
+        "name": "Coca Cola Zero",
+        "nr": 104,
+        "price": 2.5,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "0,33 l",
+        "name": "Sprite",
+        "nr": 105,
+        "price": 2.5,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "250 ml",
+        "name": "Red Bull",
+        "nr": 106,
+        "price": 2.8,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "Stilles Wasser · 0,5 l",
+        "name": "Acqua Naturale",
+        "nr": 107,
+        "price": 2.2,
+        "vegetarian": true
+      },
+      {
+        "ingredients": "Sprudelwasser · 0,5 l",
+        "name": "Acqua Frizzante",
+        "nr": 108,
+        "price": 2.2,
+        "vegetarian": true
+      }
+    ],
+    "fingerfood": [
+      {
+        "allergens": "d, f",
+        "ingredients": "Knusprige Reisbällchen mit Ragú-Füllung",
+        "name": "Arancini Ragú",
+        "nr": 110,
+        "price": 4.5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Knusprige Reisbällchen mit Spinatfüllung",
+        "name": "Arancini Spinat",
+        "nr": 111,
+        "price": 4.5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Gefüllte Teigtasche aus Pizzateig",
+        "name": "Pizza Bombe Panzerotti",
+        "nr": 112,
+        "price": 6,
+        "vegetarian": false
+      }
+    ],
+    "mittag": [
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Frische Pasta + Beilagensalat",
+        "name": "Pasta del Giorno",
+        "nr": 120,
+        "price": 12.5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Pizza mit 3 Zutaten nach Wahl + Beilagensalat",
+        "name": "Pizza mit 3 Zutaten",
+        "nr": 121,
+        "price": 12.5,
+        "vegetarian": false
+      }
+    ],
+    "panini": [
+      {
+        "allergens": "a, c, d, f, n",
+        "ingredients": "Lachs, Rote Zwiebeln, Eier, Salat, Tomaten",
+        "name": "Panino Salmone",
+        "nr": 130,
+        "price": 9,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Tomaten, Mozzarella, Basilikum, Olivenöl",
+        "name": "Panino Italy",
+        "nr": 131,
+        "price": 8,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Mozzarella, Parmaschinken (crudo), Tomaten, Rucola, Olivenöl",
+        "name": "Panino Parma",
+        "nr": 132,
+        "price": 8,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Mortadella, Provolone, Tomaten, Kopfsalat",
+        "name": "Panino Romé",
+        "nr": 133,
+        "price": 8,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Scharfe Salami, Mozzarella, Tomaten, scharfes Olivenöl",
+        "name": "Panino Piccante",
+        "nr": 134,
+        "price": 8,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Speck, Butterkäse, Tomaten, Salat",
+        "name": "Panino Tirolese",
+        "nr": 135,
+        "price": 8,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Mozzarella, Schinken, Tomaten, Salat, Olivenöl",
+        "name": "Panino Chef",
+        "nr": 136,
+        "price": 8,
+        "vegetarian": false
+      }
+    ],
+    "pasta": [
+      {
+        "allergens": "a, b, d, f, l",
+        "ingredients": "Krabben, Zucchini, Tomaten-Sahnesoße",
+        "name": "Spaghetti Romé",
+        "nr": 140,
+        "price": 13,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, f",
+        "ingredients": "Knoblauch, Olivenöl, Chili",
+        "name": "Spaghetti Aglio, Olio e Peperoncino",
+        "nr": 141,
+        "price": 11,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f, l",
+        "ingredients": "Hackfleisch-Bolognesesoße",
+        "name": "Spaghetti Bolognese",
+        "nr": 142,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f, h",
+        "ingredients": "Basilikum-Pestosauce",
+        "name": "Spaghetti Pesto",
+        "nr": 143,
+        "price": 12,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, f",
+        "ingredients": "Tomatensoße",
+        "name": "Spaghetti Napoli",
+        "nr": 144,
+        "price": 9.5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, b, d, f, l, n",
+        "ingredients": "Weißwein, Soße, Kirschtomaten, Petersilie",
+        "name": "Spaghetti Frutti di Mare",
+        "nr": 145,
+        "price": 14,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, f",
+        "ingredients": "Tomatensoße, Scharf",
+        "name": "Penne alla Arrabbiata",
+        "nr": 146,
+        "price": 12,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f, n",
+        "ingredients": "Gemüse, Sesam mit Tomatensoße",
+        "name": "Penne Vegetaria",
+        "nr": 147,
+        "price": 12,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, c, d, f, n",
+        "ingredients": "Lachs, Sahnesoße, Rucola",
+        "name": "Penne Lachs",
+        "nr": 148,
+        "price": 13,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Vier Käsesorten",
+        "name": "Rigatoni 4 Formaggi",
+        "nr": 149,
+        "price": 12,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, c, d, f, l",
+        "ingredients": "Thunfisch, Oliven, Kapern, Tomatensoße",
+        "name": "Rigatoni al Tonno",
+        "nr": 150,
+        "price": 11.5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Aubergine, Schinken, Mozzarella, Tomatensoße",
+        "name": "Rigatoni alla Norma",
+        "nr": 151,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Scharfe Salami, Oliven, Paprika, Tomatensoße",
+        "name": "Rigatoni Calabrese",
+        "nr": 152,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, c, d, f",
+        "ingredients": "Schinken, Parmesan, Sahnesoße",
+        "name": "Tortellini alla Panna",
+        "nr": 153,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, c, d, f, l",
+        "ingredients": "Hackfleisch-Bolognesesoße",
+        "name": "Tortellini Bolognese",
+        "nr": 154,
+        "price": 11,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, c, d, f, l",
+        "ingredients": "Schinken, Pilze, Bolognesesoße, Sahnesoße",
+        "name": "Tortellini Primavera",
+        "nr": 155,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, c, d, f",
+        "ingredients": "Sahnesoße, Gorgonzola",
+        "name": "Tortellini Gorgonzola",
+        "nr": 156,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Tomatensoße, Mozzarella",
+        "name": "Gnocchi Sorentina",
+        "nr": 157,
+        "price": 11,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Gorgonzola, Sahnesoße",
+        "name": "Gnocchi Gorgonzola",
+        "nr": 158,
+        "price": 12,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f, h",
+        "ingredients": "Basilikumsoße",
+        "name": "Gnocchi al Pesto",
+        "nr": 159,
+        "price": 12,
+        "vegetarian": true
+      }
+    ],
+    "pastaForno": [
+      {
+        "allergens": "a, d, f, l",
+        "ingredients": "Mozzarella, Béchamelsoße, Bolognesesoße",
+        "name": "Lasagne Classic Bolognese",
+        "nr": 160,
+        "price": 12,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, d, f, n",
+        "ingredients": "Gemüse, Sesam, Tomatensoße, Béchamelsoße",
+        "name": "Lasagne Vegetaria",
+        "nr": 161,
+        "price": 13,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, c, d, f, n",
+        "ingredients": "Lachs, Sahnesoße, Béchamelsoße, Tomatensoße",
+        "name": "Lasagne Lachs",
+        "nr": 162,
+        "price": 14,
+        "vegetarian": false
+      }
+    ],
+    "pizza": [
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Salami",
+        "name": "Pizza Salame",
+        "nr": 1,
+        "price": {
+          "normal": 10.8,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Hinterschinken",
+        "name": "Pizza Prosciutto",
+        "nr": 2,
+        "price": {
+          "normal": 10.8,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "c, d, f, l",
+        "ingredients": "Tomatensoße, Mozzarella, Tunfisch, Zwiebel",
+        "name": "Pizza Tonno",
+        "nr": 3,
+        "price": {
+          "normal": 11,
+          "party": 33
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 8, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Salami, Hinterschinken",
+        "name": "Pizza Romana",
+        "nr": 4,
+        "price": {
+          "normal": 11.2,
+          "party": 33
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 8, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Schinken, Champignons, Artischocken, Oliven",
+        "name": "Pizza Quattro Stagioni",
+        "nr": 5,
+        "price": {
+          "normal": 12.5,
+          "party": 33
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, scharfe Salami, Kapern, Zwiebeln",
+        "name": "Pizza Poco Piccante",
+        "nr": 6,
+        "price": {
+          "normal": 11.6,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Parmaschinken, Rucola, Parmesanflocken",
+        "name": "Pizza Parma",
+        "nr": 7,
+        "price": {
+          "normal": 14.5,
+          "party": 35
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 8, 9",
+        "ingredients": "Tomatensoße, Mozz., scharfe Salami, Gorgonzola, Rucola, Parmesanflocken",
+        "name": "Pizza Etna",
+        "nr": 8,
+        "price": {
+          "normal": 13.5,
+          "party": 32.5
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Kartoffeln, Mozzarella",
+        "name": "Pizza Bianco Noemi",
+        "nr": 9,
+        "price": {
+          "normal": 10.8,
+          "party": 30
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Kartoffeln, Käse, Salsiccia",
+        "name": "Pizza Patate, Salsiccia",
+        "nr": 10,
+        "price": {
+          "normal": 12.3,
+          "party": 31.5
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Zucchini, Speck, Parmesan",
+        "name": "Pizza Tirolese",
+        "nr": 11,
+        "price": {
+          "normal": 12,
+          "party": 33
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella Scharfe Salami, Paprika, Zwiebel und Scharf",
+        "name": "Pizza Zingara",
+        "nr": 12,
+        "price": {
+          "normal": 12,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Eier, Schinken, Paprika",
+        "name": "Pizza Sole Mio",
+        "nr": 13,
+        "price": {
+          "normal": 12,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Knoblauch, Oregano",
+        "name": "Pizza Marinara",
+        "nr": 14,
+        "price": {
+          "normal": 10.5,
+          "party": 27
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Mozzarella, Pommes, Würstchen",
+        "name": "Pizza Patatine e Wurst",
+        "nr": 15,
+        "price": {
+          "normal": 10.5,
+          "party": 28
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Mortadella, Gorgonzola, Aubergine",
+        "name": "Pizza Ettlingen",
+        "nr": 16,
+        "price": {
+          "normal": 13,
+          "party": 33
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 9",
+        "ingredients": "Tomatensoße, Mozzarella, Parmesan, Kirschtomaten, Zucchini",
+        "name": "Pizza Popeye",
+        "nr": 17,
+        "price": {
+          "normal": 12.5,
+          "party": 33
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Hinterschinken, Pilze",
+        "name": "Pizza Prosciutto e Funghi",
+        "nr": 18,
+        "price": {
+          "normal": 11.8,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Salami, Pilze",
+        "name": "Pizza Salami Funghi",
+        "nr": 19,
+        "price": {
+          "normal": 11.8,
+          "party": 32
+        },
+        "vegetarian": false
+      }
+    ],
+    "pizzaVeg": [
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Mozzarella",
+        "name": "Pizza Margherita",
+        "nr": 20,
+        "price": {
+          "normal": 9.7,
+          "party": 28
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "additives": "1, 3, 4, 5, 8, 9",
+        "ingredients": "Tomatensoße, Mozz., Hinterschinken, Champignons, Schinken, Artischocken, Oliven, Sardellen",
+        "name": "Pizza Capricciosa",
+        "nr": 21,
+        "price": {
+          "normal": 11.3,
+          "party": 32
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 9",
+        "ingredients": "Tomaten, Mozzarella, frische Paprika",
+        "name": "Pizza Paprika",
+        "nr": 22,
+        "price": {
+          "normal": 10.9,
+          "party": 27.9
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Mozzarella, frische Champignons",
+        "name": "Pizza Funghi",
+        "nr": 23,
+        "price": {
+          "normal": 10.9,
+          "party": 28
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Mozzarella, Aubergine, Zucchini, Champignons, Paprika",
+        "name": "Pizza Vegetaria",
+        "nr": 24,
+        "price": {
+          "normal": 12.6,
+          "party": 30.7
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f",
+        "ingredients": "Tomaten, Gorgonzola, Parmesan, Gouda",
+        "name": "Pizza Quattro Formaggi",
+        "nr": 25,
+        "price": {
+          "normal": 12.4,
+          "party": 32.2
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Büffelmozzarella, Kirschtomaten, Basilikum, Olivenöl, Rucola",
+        "name": "Pizza La Bufala",
+        "nr": 26,
+        "price": {
+          "normal": 13,
+          "party": 33
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d",
+        "ingredients": "Zucchini, Mozzarella",
+        "name": "Pizza Bianco Zucchini",
+        "nr": 27,
+        "price": {
+          "normal": 10.9,
+          "party": 29
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Tomatensoße, Mozzarella, Oliven, Kirschtomaten",
+        "name": "Pizza Rossa Aileyna",
+        "nr": 28,
+        "price": {
+          "normal": 11,
+          "party": 29
+        },
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "additives": "3, 4, 5, 8",
+        "ingredients": "Tomatensoße, Mozzarella, Schinken, Ananas",
+        "name": "Pizza Hawaii",
+        "nr": 29,
+        "price": {
+          "normal": 10.5,
+          "party": 30
+        },
+        "vegetarian": false
+      },
+      {
+        "allergens": "c, d, e, f, n",
+        "ingredients": "Mozzarella, Lachs, Rucola, Kirschtomaten, Roter Pfeffer",
+        "name": "Pizza Salmone",
+        "nr": 30,
+        "price": {
+          "normal": 13.5,
+          "party": 33
+        },
+        "vegetarian": false
+      }
+    ],
+    "salate": [
+      {
+        "allergens": "h",
+        "ingredients": "Grüner Salat, Tomaten, Karotten, Gurke",
+        "name": "Insalata Mista",
+        "nr": 70,
+        "price": 9,
+        "vegetarian": true
+      },
+      {
+        "allergens": "c, d, f, h",
+        "ingredients": "Schinken, Käse, Oliven, Zwiebel, Ei",
+        "name": "Insalata Italia Mista",
+        "nr": 71,
+        "price": 11,
+        "vegetarian": false
+      },
+      {
+        "allergens": "c, d, f, h, l",
+        "ingredients": "Oliven, Thunfisch, Zwiebeln, Ei",
+        "name": "Insalata Nizza",
+        "nr": 72,
+        "price": 11,
+        "vegetarian": false
+      },
+      {
+        "allergens": "c, d, f, h, n",
+        "ingredients": "Rucola, Lachs, Kirschtomaten, Parmesan",
+        "name": "Insalata Romé",
+        "nr": 73,
+        "price": 11.5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "d, f, h",
+        "ingredients": "Tomaten, Mozzarella, Balsamico, Basilikum",
+        "name": "Insalata Caprese",
+        "nr": 74,
+        "price": 10,
+        "vegetarian": true
+      }
+    ],
+    "schueler": [
+      {
+        "allergens": "d, f",
+        "ingredients": "Pizza mit 2 Zutaten + Softgetränk 330 ml",
+        "name": "Margherita Menü",
+        "nr": 80,
+        "price": 6.5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f",
+        "ingredients": "Pizza mit 2 Zutaten + Softgetränk 330 ml",
+        "name": "Pizza Unsch Menu",
+        "nr": 81,
+        "price": 7.5,
+        "vegetarian": false
+      },
+      {
+        "allergens": "a, f",
+        "ingredients": "Pasta Napoli + Softgetränk 330 ml",
+        "name": "Pasta Pomodoro Menu",
+        "nr": 82,
+        "price": 7,
+        "vegetarian": true
+      },
+      {
+        "allergens": "a, d, f, l",
+        "ingredients": "Pasta mit Bolognesesoße + Softgetränk 330 ml",
+        "name": "Pasta Bolognese Menu",
+        "nr": 83,
+        "price": 7,
+        "vegetarian": false
+      }
+    ],
+    "suppen": [
+      {
+        "allergens": "d, f",
+        "ingredients": "Hausgemacht, cremig",
+        "name": "Tomatensuppe",
+        "nr": 60,
+        "price": 5,
+        "vegetarian": true
+      },
+      {
+        "allergens": "d, f, l",
+        "ingredients": "Italienische Gemüsesuppe",
+        "name": "Minestrone Verdure",
+        "nr": 61,
+        "price": 5,
+        "vegetarian": true
+      }
+    ]
+  },
+  "dressings": {
+    "Joghurtdressing": {
+      "allergens": "a, d, f, h",
+      "price": 0
+    },
+    "Italia Dressing": {
+      "allergens": "h",
+      "price": 0
+    }
+  }
+}
